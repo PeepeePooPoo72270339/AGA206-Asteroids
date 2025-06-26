@@ -387,6 +387,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enginepower: 30
   Turnpower: 30
+  HpMax: 3
+  CurrentHp: 0
 --- !u!60 &695416944
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -580,11 +582,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7434305760714174664, guid: bd89279b686a5c24db04103e8e96c64e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.8639464
+      value: -3.12
       objectReference: {fileID: 0}
     - target: {fileID: 7434305760714174664, guid: bd89279b686a5c24db04103e8e96c64e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.465
+      value: 2.67
       objectReference: {fileID: 0}
     - target: {fileID: 7434305760714174664, guid: bd89279b686a5c24db04103e8e96c64e, type: 3}
       propertyPath: m_LocalPosition.z

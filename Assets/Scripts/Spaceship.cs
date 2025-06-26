@@ -5,10 +5,13 @@ public class Spaceship : MonoBehaviour
     public float enginepower = 10f;
     private Rigidbody2D rb2D;
     public float Turnpower = 10f;
+    public int HpMax = 3;
+    public int CurrentHp;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
+        CurrentHp = HpMax;
     }
 
     // Update is called once per frame
@@ -18,6 +21,12 @@ public class Spaceship : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
         applythrust(vertical);
         ApplyTorque(horizontal);
+        if (Input.GetKeyDown(KeyCode.K)) 
+        {
+            TakeDamage(1);
+
+        }
+
     }
 
     private void applythrust(float amount)
@@ -32,4 +41,25 @@ public class Spaceship : MonoBehaviour
         float torque = amount * Turnpower * Time.deltaTime;
         rb2D.AddTorque(-torque);
     }
+
+    public void TakeDamage(int damage)
+    {
+        //reduce hp
+        CurrentHp = CurrentHp - damage;
+
+        //if hp is 0 die
+        if (CurrentHp <= 0)
+        {
+            Explode();
+        }
+    
+    }
+    
+    public void Explode()
+    {
+        //Destroy ship (end game)
+        Debug.Log("GameOver");
+        Destroy(gameObject);
+    }
+
 }

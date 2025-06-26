@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1297002441872207323}
   - component: {fileID: 574744998872135762}
   - component: {fileID: 7503957288509584399}
+  - component: {fileID: -6162775158764613565}
   m_Layer: 0
   m_Name: Asteroid_Med03
   m_TagString: Untagged
@@ -176,3 +177,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-6162775158764613565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7394880972847414939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97221205737045c48a14f799a027829e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
