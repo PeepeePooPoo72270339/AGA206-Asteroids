@@ -7,6 +7,12 @@ public class Spaceship : MonoBehaviour
     public float Turnpower = 10f;
     public int HpMax = 3;
     public int CurrentHp;
+    [Header("Bullets")]
+    public GameObject BulletPrefab;
+    public float BulletSpeed = 100f;
+    public float FiringRate = 0.33f;
+    private float fireTimer = 0f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,14 +27,24 @@ public class Spaceship : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
         applythrust(vertical);
         ApplyTorque(horizontal);
-        if (Input.GetKeyDown(KeyCode.K)) 
-        {
-            TakeDamage(1);
+        updatefiring();
+       
 
-        }
+
 
     }
+    private void updatefiring()
+    {
+        bool IsFiring = Input.GetButton("Fire1");
+        fireTimer = fireTimer - Time.deltaTime;  //timer that goes down
 
+
+        if (IsFiring == true && fireTimer <= 0)
+        {
+            FireBullet();
+            fireTimer = FiringRate;
+        }
+    }
     private void applythrust(float amount)
     {
         //Debug.Log("Thrustamount is" + amount);
@@ -60,6 +76,17 @@ public class Spaceship : MonoBehaviour
         //Destroy ship (end game)
         Debug.Log("GameOver");
         Destroy(gameObject);
+    }
+
+    public void FireBullet()
+    {
+        //create bullet at ship loaction and rotation
+        GameObject Bullet = Instantiate(BulletPrefab, transform.position, transform.rotation);
+        Rigidbody2D rb = Bullet.GetComponent<Rigidbody2D>();
+        Vector2 force = transform.up * BulletSpeed;
+        rb.AddForce(force);
+
+
     }
 
 }

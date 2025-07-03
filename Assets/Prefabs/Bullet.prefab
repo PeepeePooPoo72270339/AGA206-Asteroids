@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7394880972847414939
+--- !u!1 &6036470394332747684
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,41 +8,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 646961955567903670}
-  - component: {fileID: 1297002441872207323}
-  - component: {fileID: 574744998872135762}
-  - component: {fileID: 7503957288509584399}
-  - component: {fileID: -6162775158764613565}
-  - component: {fileID: -5685794824854051462}
+  - component: {fileID: 8705186263462207807}
+  - component: {fileID: 2607602468048294708}
+  - component: {fileID: 574932821670315011}
+  - component: {fileID: 5318456565244228847}
+  - component: {fileID: -4814385115228961828}
+  - component: {fileID: -3368742256327209934}
   m_Layer: 0
-  m_Name: Asteroid_Med03
+  m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &646961955567903670
+--- !u!4 &8705186263462207807
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7394880972847414939}
+  m_GameObject: {fileID: 6036470394332747684}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.77, y: 3.59, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalPosition: {x: -2.024, y: 1.724, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1297002441872207323
+--- !u!212 &2607602468048294708
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7394880972847414939}
+  m_GameObject: {fileID: 6036470394332747684}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -80,24 +80,24 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bed0f45ef9694114eab8fdc96723407e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: b787e6b473daf084a8dac418d2a16f9a, type: 3}
+  m_Color: {r: 1, g: 0.41037738, b: 0.41037738, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 0.12, y: 0.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &574744998872135762
-PolygonCollider2D:
+--- !u!58 &574932821670315011
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7394880972847414939}
+  m_GameObject: {fileID: 6036470394332747684}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
@@ -121,44 +121,20 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
-    newSize: {x: 0.32, y: 0.32}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.13136965, y: 0.032283425}
-      - {x: 0.13144225, y: 0.06954563}
-      - {x: 0.062784135, y: 0.11992741}
-      - {x: -0.005654514, y: 0.12079787}
-      - {x: -0.03833417, y: 0.071562424}
-      - {x: -0.07842676, y: 0.07037543}
-      - {x: -0.110229015, y: 0.04565495}
-      - {x: -0.11307949, y: -0.042817667}
-      - {x: -0.04710985, y: -0.11175525}
-      - {x: 0.038609214, y: -0.11238396}
-      - {x: 0.064971775, y: -0.050774656}
-      - {x: 0.14263323, y: -0.04183261}
-      - {x: 0.14373262, y: 0.03169729}
-  m_UseDelaunayMesh: 0
---- !u!50 &7503957288509584399
+  m_Radius: 0.05
+--- !u!50 &5318456565244228847
 Rigidbody2D:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7394880972847414939}
+  m_GameObject: {fileID: 6036470394332747684}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -178,37 +154,30 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-6162775158764613565
+--- !u!114 &-4814385115228961828
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7394880972847414939}
+  m_GameObject: {fileID: 6036470394332747684}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97221205737045c48a14f799a027829e, type: 3}
+  m_Script: {fileID: 11500000, guid: b991731516bac5f42bb14a4e7ea8d589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollisionDamage: 1
-  Health: 1
-  Chunks:
-  - {fileID: 8616152438468320079, guid: 7f1a414cb7c18e84eb33803973646363, type: 3}
-  - {fileID: 4073982973239259263, guid: 625eb2fe96cd0f446bc79f5613b70a1c, type: 3}
-  - {fileID: 5927980618699112160, guid: d8ac741c664f62247b40ac8ac5b61aac, type: 3}
-  chunksmax: 3
-  chunksmin: 2
-  explodedist: 5
-  explodeforce: 10
---- !u!114 &-5685794824854051462
+  Explosion: {fileID: 3367258481978470411, guid: 66f07f230996b704e806a2db687fc6ff, type: 3}
+  Damage: 1
+--- !u!114 &-3368742256327209934
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7394880972847414939}
+  m_GameObject: {fileID: 6036470394332747684}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e2ea2adfc229f4468b1c94b9a3b8a90, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a73b768449e77941bdbda30f1eba8e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Lifetime: 5
