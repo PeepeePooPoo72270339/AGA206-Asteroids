@@ -4,6 +4,7 @@ using UnityEngine;
 public class Asteroid : MonoBehaviour
 
 {
+    
     private void Start()
     {
         /*for (int i =0; i < Chunks.Length; i++)
@@ -20,6 +21,9 @@ public class Asteroid : MonoBehaviour
     public int chunksmin;
     public float explodedist;
     public float explodeforce;
+    [Range (1, 3)]
+    public int SpawnValue = 3;
+    
     public void OnCollisionEnter2D(Collision2D collision)
     {
         Spaceship ship = collision.gameObject.GetComponent<Spaceship>();

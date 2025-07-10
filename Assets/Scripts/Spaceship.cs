@@ -4,7 +4,8 @@ public class Spaceship : MonoBehaviour
 {
     public float enginepower = 10f;
     private Rigidbody2D rb2D;
-    public float Turnpower = 10f;
+    public float Turnpower = 2;
+    public float MaxTurnpower = 200f;
     public int HpMax = 3;
     public int CurrentHp;
     [Header("Bullets")]
@@ -12,6 +13,7 @@ public class Spaceship : MonoBehaviour
     public float BulletSpeed = 100f;
     public float FiringRate = 0.33f;
     private float fireTimer = 0f;
+    public SoundPlayer Hitsounds;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -28,6 +30,7 @@ public class Spaceship : MonoBehaviour
         applythrust(vertical);
         ApplyTorque(horizontal);
         updatefiring();
+      
        
 
 
@@ -54,14 +57,26 @@ public class Spaceship : MonoBehaviour
 
     private void ApplyTorque(float amount)
     {
+
         float torque = amount * Turnpower * Time.deltaTime;
+
+        //Add something here to restrict turning there also needs to be a slow down for when there is no input
         rb2D.AddTorque(-torque);
+
+        if (torque <= MaxTurnpower)
+        {
+            torque = MaxTurnpower;
+            
+
+        }
+
     }
 
     public void TakeDamage(int damage)
     {
         //reduce hp
         CurrentHp = CurrentHp - damage;
+        Hitsounds.PlayRandomSound();
 
         //if hp is 0 die
         if (CurrentHp <= 0)
