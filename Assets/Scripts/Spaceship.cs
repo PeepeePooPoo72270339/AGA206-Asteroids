@@ -14,6 +14,7 @@ public class Spaceship : MonoBehaviour
     public float FiringRate = 0.33f;
     private float fireTimer = 0f;
     public SoundPlayer Hitsounds;
+    public ScreenFlash Flash;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -77,6 +78,7 @@ public class Spaceship : MonoBehaviour
         //reduce hp
         CurrentHp = CurrentHp - damage;
         Hitsounds.PlayRandomSound();
+        StartCoroutine(Flash.FlashRoutine());
 
         //if hp is 0 die
         if (CurrentHp <= 0)

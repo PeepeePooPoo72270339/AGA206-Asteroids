@@ -63,7 +63,7 @@ public class Asteroid : MonoBehaviour
     private void CreateAsteroidChunk()
     {
 
-        if (Chunks == null)
+        if (Chunks == null || Chunks.Length == 0)
            return;
 
         int randomindex = Random.Range(0, Chunks.Length);

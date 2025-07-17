@@ -57,7 +57,7 @@ public class SpawnManager : MonoBehaviour
     {
         Vector2 randomPos = Random.insideUnitCircle;
         Vector2 direction = randomPos.normalized;
-        Vector2 FinalPos = (Vector2)transform.position + direction * 2f;
+        Vector2 FinalPos = (Vector2)transform.position + direction * 20f;
 
         return Camera.main.ViewportToWorldPoint(FinalPos);
     }
