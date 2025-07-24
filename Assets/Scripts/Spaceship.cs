@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Spaceship : MonoBehaviour
@@ -15,12 +16,16 @@ public class Spaceship : MonoBehaviour
     private float fireTimer = 0f;
     public SoundPlayer Hitsounds;
     public ScreenFlash Flash;
+    public int Score;
+    public int Highscore;
+    public GameOverUI GameOverUi; 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
         CurrentHp = HpMax;
+        Highscore = GetHighScore();
     }
 
     // Update is called once per frame
@@ -31,6 +36,10 @@ public class Spaceship : MonoBehaviour
         applythrust(vertical);
         ApplyTorque(horizontal);
         updatefiring();
+        if(Input.GetKeyDown(KeyCode.K))
+        {
+            TakeDamage(1);
+        }
       
        
 
@@ -92,6 +101,7 @@ public class Spaceship : MonoBehaviour
     {
         //Destroy ship (end game)
         Debug.Log("GameOver");
+        GameOver();
         Destroy(gameObject);
     }
 
@@ -106,4 +116,30 @@ public class Spaceship : MonoBehaviour
 
     }
 
+    public int GetHighScore()
+    {
+        return PlayerPrefs.GetInt("Highscore", 0);
+
+    }
+
+    public void SetHighScore(int score)
+    {
+        PlayerPrefs.SetInt("Highscore", score);
+
+    }
+
+    public void GameOver()
+    {
+        bool CelebrateHighScore = false;
+        if(Score > GetHighScore() && CelebrateHighScore == false)
+        {
+            SetHighScore(Score);
+            CelebrateHighScore = true;
+        }
+        GameOverUi.Show(CelebrateHighScore, Score, GetHighScore());
+    }
+    
+
 }
+
+

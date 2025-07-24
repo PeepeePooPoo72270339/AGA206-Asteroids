@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Asteroid : MonoBehaviour
 
@@ -23,6 +24,8 @@ public class Asteroid : MonoBehaviour
     public float explodeforce;
     [Range (1, 3)]
     public int SpawnValue = 3;
+    [HeaderAttribute("Score")]
+    public int score = 10;
     
     public void OnCollisionEnter2D(Collision2D collision)
     {
@@ -51,6 +54,13 @@ public class Asteroid : MonoBehaviour
 
     public void Die()
     {
+        Spaceship ship = FindFirstObjectByType<Spaceship>();
+
+        if(ship != null)
+        {
+            ship.Score += score;
+
+        }
         int numChunks = Random.Range(chunksmin, chunksmax + 1);
         for(int i = 0; i < numChunks; i++)
         {
