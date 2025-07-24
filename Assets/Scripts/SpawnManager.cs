@@ -44,9 +44,15 @@ public class SpawnManager : MonoBehaviour
     }
     private void SpawnAsteroid()
     {
-        Debug.Log("Spawn");
+        //Debug.Log("Spawn");
+        //picks a random asteroid
         int randomindex = Random.Range(0, AsteroidRefs.Length);
+
+        //Random offscreenLocation
         Vector3 spawnpoint = RandomOffScreenPoint();
+        //Prevents z axis from being randomised
+        spawnpoint.z = transform.position.z;
+
         GameObject asteroid = Instantiate(AsteroidRefs[randomindex], spawnpoint, transform.rotation);
         Vector2 force = PushDirection(spawnpoint) * PushForce;
         Rigidbody2D rb = asteroid.GetComponent<Rigidbody2D>();

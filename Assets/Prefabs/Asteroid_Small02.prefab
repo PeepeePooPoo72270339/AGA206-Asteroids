@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.4581, y: 4.0236, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -194,6 +194,7 @@ MonoBehaviour:
   explodedist: 0
   explodeforce: 0
   SpawnValue: 1
+  score: 10
 --- !u!114 &207772793309716701
 MonoBehaviour:
   m_ObjectHideFlags: 0
