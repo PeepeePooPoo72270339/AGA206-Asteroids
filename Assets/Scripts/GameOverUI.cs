@@ -22,8 +22,8 @@ public class GameOverUI : MonoBehaviour
 
     public void Show(bool celebrateHighScore, int score, int highscore)
     {
-        ScoreTextBox.text = score.ToString();
-        HighScoreTextBox.text = highscore.ToString();
+        ScoreTextBox.text ="Current Score" + score.ToString();
+        HighScoreTextBox.text = "High Score" + highscore.ToString();
         GameoverPanel.SetActive(true);
         Celebrate.SetActive(celebrateHighScore);
 
