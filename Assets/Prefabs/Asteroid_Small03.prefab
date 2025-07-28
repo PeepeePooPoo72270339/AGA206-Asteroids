@@ -190,8 +190,8 @@ MonoBehaviour:
   Chunks: []
   chunksmax: 0
   chunksmin: 0
-  explodedist: 0
-  explodeforce: 0
+  explodedist: 1
+  explodeforce: 10
   SpawnValue: 1
   score: 10
 --- !u!114 &-6836581184937328822

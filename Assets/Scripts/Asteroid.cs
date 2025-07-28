@@ -5,15 +5,7 @@ using UnityEngine.SocialPlatforms.Impl;
 public class Asteroid : MonoBehaviour
 
 {
-    
-    private void Start()
-    {
-        /*for (int i =0; i < Chunks.Length; i++)
-        {
-            Debug.Log(Chunks[i]);
-;       }
-        Debug.Log(Chunks[0].name);*/
-    }
+    //Asteroid Stats
     public int CollisionDamage = 1;
     public int Health = 1;
     public GameObject[] Chunks;
@@ -27,6 +19,7 @@ public class Asteroid : MonoBehaviour
     [HeaderAttribute("Score")]
     public int score = 10;
     
+    //Registers collision and tells Spaceship to reduce it's health
     public void OnCollisionEnter2D(Collision2D collision)
     {
         Spaceship ship = collision.gameObject.GetComponent<Spaceship>();
@@ -38,6 +31,7 @@ public class Asteroid : MonoBehaviour
 
     }
 
+    //Script for reciving damage
     public void TakeDamage(int damage)
     {
         Health -= (damage);
@@ -51,7 +45,7 @@ public class Asteroid : MonoBehaviour
 
     }
     
-
+    //Dies when enough damage is taken and calls to spawn chunks
     public void Die()
     {
         Spaceship ship = FindFirstObjectByType<Spaceship>();
@@ -69,7 +63,7 @@ public class Asteroid : MonoBehaviour
         }
         Destroy(gameObject);
     }
-
+    //Spawn chunks if possible and the math to determine location
     private void CreateAsteroidChunk()
     {
 

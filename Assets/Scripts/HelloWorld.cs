@@ -13,6 +13,7 @@ public class HelloWorld : MonoBehaviour
       Debug.Log("My name is" + myname);
         myname = name1;
       Debug.Log("My name is" + myname);
+        myname = name2;
     }
 
     // Update is called once per frame

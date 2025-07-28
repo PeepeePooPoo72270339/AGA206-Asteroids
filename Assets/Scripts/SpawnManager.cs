@@ -7,8 +7,8 @@ public class SpawnManager : MonoBehaviour
     public float CheckInterval = 3f; //timer of spawn
     public float PushForce = 100f; //Push object onto screen
     public int SpawnThreshold = 10; //Asteroid limit 
-    private float checkTimer = 0f;
-    public float inaccuracy = 2f;
+    private float checkTimer = 0f; //Timer for asteroid Spawns
+    public float inaccuracy = 5f; // Spread
     
     public int TotalAsteroidValue()
     {
@@ -63,7 +63,9 @@ public class SpawnManager : MonoBehaviour
     {
         Vector2 randomPos = Random.insideUnitCircle;
         Vector2 direction = randomPos.normalized;
-        Vector2 FinalPos = (Vector2)transform.position + direction * 20f;
+        Vector2 FinalPos = (Vector2)transform.position + direction * 2f;
+        Vector3 result = Camera.main.ViewportToWorldPoint(FinalPos);
+    
 
         return Camera.main.ViewportToWorldPoint(FinalPos);
     }

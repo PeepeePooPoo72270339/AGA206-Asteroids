@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    //Create explosion when bullet hit something
     public GameObject Explosion;
     public void Blowup()
     {
@@ -10,9 +11,10 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
 
-  
+    //Damage of Bullet
     public int Damage = 1;
 
+    //Register Collision and tell asterid to damage itself
    private void OnTriggerEnter2D(Collider2D collision)
    {
         Asteroid asteroid = collision.gameObject.GetComponent<Asteroid>();
