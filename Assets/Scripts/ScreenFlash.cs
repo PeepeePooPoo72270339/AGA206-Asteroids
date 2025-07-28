@@ -12,13 +12,8 @@ public class ScreenFlash : MonoBehaviour
     {
         flashImage = GetComponent<Image>();
         imageColor = flashImage.color;
-        StartCoroutine(FlashRoutine());
+      
         
-    }
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-            StartCoroutine(FlashRoutine());
     }
 
     public IEnumerator FlashRoutine()
