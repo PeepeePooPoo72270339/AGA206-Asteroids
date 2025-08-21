@@ -23,6 +23,22 @@ public class Bullet : MonoBehaviour
             asteroid.TakeDamage(Damage);
             Blowup();
         }
+
+        RedMonster redMonster = collision.gameObject.GetComponent<RedMonster>();
+        if (redMonster)
+        {
+            redMonster.TakeDamage(Damage);
+            Blowup();
+
+        }
+
+        GrayMonster grayMonster = collision.gameObject.GetComponent<GrayMonster>();
+        if (grayMonster)
+        {
+            grayMonster.TakeDamage(Damage);
+            Blowup();
+
+        }
    }
 
 }

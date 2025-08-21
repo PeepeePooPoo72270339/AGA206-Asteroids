@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-public class SpawnManager : MonoBehaviour
+public class SpawnManager : Singleton<SpawnManager>
 {
     public GameObject[] AsteroidRefs;//Asteroids to spawn
     public float CheckInterval = 3f; //timer of spawn
@@ -52,18 +52,25 @@ public class SpawnManager : MonoBehaviour
         Vector3 spawnpoint = RandomOffScreenPoint();
         //Prevents z axis from being randomised
         spawnpoint.z = transform.position.z;
+        spawnpoint.y = 9;
+        spawnpoint.x = Random.Range(-9,7);
 
         GameObject asteroid = Instantiate(AsteroidRefs[randomindex], spawnpoint, transform.rotation);
-        Vector2 force = PushDirection(spawnpoint) * PushForce;
-        Rigidbody2D rb = asteroid.GetComponent<Rigidbody2D>();
-        rb.AddForce(force);
+        //Only Asteroid Objects move downward
+        if (randomindex < 6) 
+        {
+            Vector2 force = PushDirection(spawnpoint) * PushForce;
+            Rigidbody2D rb = asteroid.GetComponent<Rigidbody2D>();
+            rb.AddForce(force);
+        }
+        
     }
 
     private Vector3 RandomOffScreenPoint()
     {
         Vector2 randomPos = Random.insideUnitCircle;
         Vector2 direction = randomPos.normalized;
-        Vector2 FinalPos = (Vector2)transform.position + direction * 2f;
+        Vector2 FinalPos = (Vector2)transform.position + direction;
         Vector3 result = Camera.main.ViewportToWorldPoint(FinalPos);
     
 
@@ -76,6 +83,7 @@ public class SpawnManager : MonoBehaviour
         Vector2 miss = Random.insideUnitCircle * inaccuracy;
         Vector2 destination = (Vector2)transform.position + miss;
         Vector2 direction = (destination - from).normalized;
+        direction.x = 0;
 
         return direction;
     }

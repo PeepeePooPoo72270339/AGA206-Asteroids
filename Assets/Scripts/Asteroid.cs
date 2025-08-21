@@ -18,9 +18,23 @@ public class Asteroid : MonoBehaviour
     public int SpawnValue = 3;
     [HeaderAttribute("Score")]
     public int score = 10;
+    public float pushforce = 100f;
+    public PolygonCollider2D PolyCollider;
     
     //Registers collision and tells Spaceship to reduce it's health
     public void OnCollisionEnter2D(Collision2D collision)
+    {
+        Spaceship ship = collision.gameObject.GetComponent<Spaceship>();
+        if (ship != null)
+        {
+            ship.TakeDamage(CollisionDamage);
+
+        }
+
+
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         Spaceship ship = collision.gameObject.GetComponent<Spaceship>();
         if (ship != null)
@@ -81,7 +95,11 @@ public class Asteroid : MonoBehaviour
         Vector2 dir = (spawnPos - newPos).normalized;
 
         Rigidbody2D rb = chunk.GetComponent<Rigidbody2D>();
-        rb.AddForce(dir * explodeforce);
+        dir.x = 0;
+        dir.y = -1;
+        rb.AddForce(dir * pushforce);
+        //rb.AddForce(dir * explodeforce);
+       
 
     }
 }

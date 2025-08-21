@@ -1,8 +1,14 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+public enum PowerUP
+{
+    Single, Double, Cross
+}
 
 public class Spaceship : MonoBehaviour
 {
+    public PowerUP CurrentPowerUP;
     public float enginepower = 10f;
     private Rigidbody2D rb2D;
     public float Turnpower = 2;
@@ -18,7 +24,16 @@ public class Spaceship : MonoBehaviour
     public ScreenFlash Flash;
     public int Score;
     public int Highscore;
-    public GameOverUI GameOverUi; 
+    public GameOverUI GameOverUi;
+    public float MaxVertSpeed;
+    public float MaxHorispeed;
+    public PolygonCollider2D PolyCollider;
+    public float InvincibilityTime = 0.5f;
+    public bool IsInvincible;
+    public GameObject Player;
+    public SpriteRenderer SpriteR;
+    public Color DefaultColor;
+    public Color InvincibleColor;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,20 +48,23 @@ public class Spaceship : MonoBehaviour
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
-        applythrust(vertical);
-        ApplyTorque(horizontal);
-        updatefiring();
-        if(Input.GetKeyDown(KeyCode.K))
+        vertical = Mathf.Clamp(vertical, -1, 1);
+        horizontal = Mathf.Clamp(horizontal, -1, 1);
+        Applythrust(horizontal, vertical);
+        //ApplyTorque(horizontal);
+        Updatefiring();
+        
+        if (Input.GetKeyDown(KeyCode.K))
         {
             TakeDamage(1);
         }
-      
-       
+
+
 
 
 
     }
-    private void updatefiring()
+    private void Updatefiring()
     {
         bool IsFiring = Input.GetButton("Fire1");
         fireTimer = fireTimer - Time.deltaTime;  //timer that goes down
@@ -58,11 +76,20 @@ public class Spaceship : MonoBehaviour
             fireTimer = FiringRate;
         }
     }
-    private void applythrust(float amount)
+    private void Applythrust(float hori, float vert)
     {
         //Debug.Log("Thrustamount is" + amount);
-        Vector2 thrust = transform.up * enginepower * Time.deltaTime * amount;
+        //Vector2 thrust = transform.position * enginepower * amount;
+        Vector2 thrust = new Vector2(hori, vert) * enginepower;
+        Debug.Log("Thrust" + thrust);
+
+        rb2D.linearVelocityY = Mathf.Clamp(thrust.y, -MaxVertSpeed, MaxVertSpeed);
+        rb2D.linearVelocityX = Mathf.Clamp(thrust.x, -MaxHorispeed, MaxHorispeed);
+        // how clamp works Mathf.Clamp(enginepower, 0, 50);
         rb2D.AddForce(thrust);
+        
+
+
     }
 
     private void ApplyTorque(float amount)
@@ -70,6 +97,7 @@ public class Spaceship : MonoBehaviour
 
         float torque = amount * Turnpower * Time.deltaTime;
 
+        
         //Add something here to restrict turning there also needs to be a slow down for when there is no input
         rb2D.AddTorque(-torque);
 
@@ -88,6 +116,8 @@ public class Spaceship : MonoBehaviour
         CurrentHp = CurrentHp - damage;
         Hitsounds.PlayRandomSound();
         StartCoroutine(Flash.FlashRoutine());
+        StartCoroutine(InvincibiltyFrame());
+
 
         //if hp is 0 die
         if (CurrentHp <= 0)
@@ -137,6 +167,19 @@ public class Spaceship : MonoBehaviour
             CelebrateHighScore = true;
         }
         GameOverUi.Show(CelebrateHighScore, Score, GetHighScore());
+    }
+
+    public IEnumerator InvincibiltyFrame()
+    {
+        IsInvincible = true;
+        PolyCollider.enabled = false;
+        SpriteR.color = InvincibleColor;
+        yield return new WaitForSeconds(InvincibilityTime);
+        PolyCollider.enabled = true;
+        IsInvincible = false;
+        SpriteR.color = DefaultColor;
+        
+       
     }
     
 

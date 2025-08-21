@@ -148,7 +148,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -201,6 +201,8 @@ MonoBehaviour:
   explodeforce: 10
   SpawnValue: 2
   score: 10
+  pushforce: 100
+  PolyCollider: {fileID: 0}
 --- !u!114 &2492703705517550612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,7 +210,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2804204428431031480}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e2ea2adfc229f4468b1c94b9a3b8a90, type: 3}
   m_Name: 
