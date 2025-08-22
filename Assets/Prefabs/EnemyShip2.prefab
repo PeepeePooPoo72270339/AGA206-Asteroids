@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7344039231108690657}
   - component: {fileID: 8861275859878458237}
   - component: {fileID: 9062326539605972771}
-  - component: {fileID: 551126308258441015}
   - component: {fileID: -8487606107999782481}
+  - component: {fileID: -8881482479759418316}
   m_Layer: 0
   m_Name: EnemyShip2
   m_TagString: Untagged
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 763734b4a45366b489104d65839edce6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d9bf0cb6d6c25564c9f38f29a631de84, type: 3}
   m_Color: {r: 0.254717, g: 0.254717, b: 0.254717, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -117,8 +117,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &551126308258441015
-PolygonCollider2D:
+--- !u!114 &-8487606107999782481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6964001095121275964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8147573448d8b7c4b96bd7a2be1aae69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 3
+  Movepoint: {x: 0, y: 4}
+  duration: 2.5
+  score: 10
+  BulletPrefab: {fileID: 6036470394332747684, guid: cc41c9dad4698de46995a556b1e77e6c, type: 3}
+  BulletSpeed: 150
+--- !u!58 &-8881482479759418316
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -147,45 +165,9 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.64}
-    newSize: {x: 0.64, y: 0.64}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.099999994, y: 0.32}
-      - {x: -0.32, y: -0.22}
-      - {x: -0.32, y: -0.31}
-      - {x: 0.29, y: -0.31}
-      - {x: 0.32, y: -0.29}
-      - {x: 0.32, y: -0.21}
-      - {x: 0.03, y: 0.32}
-  m_UseDelaunayMesh: 0
---- !u!114 &-8487606107999782481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6964001095121275964}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8147573448d8b7c4b96bd7a2be1aae69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Health: 3
-  Movepoint: {x: 0, y: 4}
-  duration: 2.5
-  score: 10
-  BulletPrefab: {fileID: 6036470394332747684, guid: cc41c9dad4698de46995a556b1e77e6c, type: 3}
-  BulletSpeed: 150
+  m_Radius: 0.16

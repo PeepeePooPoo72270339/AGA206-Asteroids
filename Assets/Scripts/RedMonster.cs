@@ -24,6 +24,8 @@ public class RedMonster : MonoBehaviour
 
     public float BulletSpeed = 300;
 
+    public MonoBehaviour spawner;
+
     private void Start()
 
     {
@@ -95,7 +97,6 @@ public class RedMonster : MonoBehaviour
         Spaceship ship = FindFirstObjectByType<Spaceship>();
         if(ship != null)
         {
-
             ship.Score += score;
             Destroy(gameObject);
         }

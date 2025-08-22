@@ -210,9 +210,6 @@ MonoBehaviour:
   - {fileID: 4438481577341491021, guid: 3980eecd17dcbf84f837c91d3a4c2f83, type: 3}
   - {fileID: 2804204428431031480, guid: 7fe7e7a56b92d744796455cff101acec, type: 3}
   - {fileID: 7394880972847414939, guid: b0441ec648925e6489131eeab02a44da, type: 3}
-  - {fileID: 8616152438468320079, guid: 7f1a414cb7c18e84eb33803973646363, type: 3}
-  - {fileID: 4073982973239259263, guid: 625eb2fe96cd0f446bc79f5613b70a1c, type: 3}
-  - {fileID: 5927980618699112160, guid: d8ac741c664f62247b40ac8ac5b61aac, type: 3}
   chunksmax: 3
   chunksmin: 2
   explodedist: 1
