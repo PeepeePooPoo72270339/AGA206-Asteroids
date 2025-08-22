@@ -53,7 +53,7 @@ public class Spaceship : MonoBehaviour
         Applythrust(horizontal, vertical);
         //ApplyTorque(horizontal);
         Updatefiring();
-        
+        Mathf.Clamp(FiringRate, 0.1f, 2);
 
 
 

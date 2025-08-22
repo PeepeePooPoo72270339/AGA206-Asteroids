@@ -1,14 +1,22 @@
 using Unity.Mathematics;
+using UnityEditor.UI;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public MonoBehaviour timer;
     //Create explosion when bullet hit something
     public GameObject Explosion;
     public void Blowup()
     {
         Instantiate(Explosion, transform.position,Quaternion.identity);
         Destroy(gameObject);
+    }
+
+    void Start()
+    {
+     
+
     }
 
     //Damage of Bullet
