@@ -183,9 +183,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8147573448d8b7c4b96bd7a2be1aae69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 2
+  Health: 3
   Movepoint: {x: 0, y: 4}
-  duration: 2
+  duration: 2.5
   score: 10
   BulletPrefab: {fileID: 6036470394332747684, guid: cc41c9dad4698de46995a556b1e77e6c, type: 3}
   BulletSpeed: 150

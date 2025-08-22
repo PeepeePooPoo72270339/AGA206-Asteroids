@@ -1,14 +1,10 @@
-using JetBrains.Annotations;
 using System.Collections;
-
 using UnityEngine;
 
-public class RedMonster : MonoBehaviour
-
+public class GreenMonsterScript : MonoBehaviour
 {
     public int Health;
 
-    public Vector2 leftPoint;
 
     public Vector2 rightPoint;
 
@@ -23,14 +19,47 @@ public class RedMonster : MonoBehaviour
     private Rigidbody2D rb2D;
 
     public float BulletSpeed = 300;
+    public float rotationSpeed;
 
-    private void Start()
-
+    public Vector3 Rotator;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public void TakeDamage(int damage)
     {
-        gameObject.transform.rotation = Quaternion.Euler(0, 0, 180);
+        Health -= (damage);
+        if (Health <= 0)
+        {
+            Die();
+
+        }
+    }
+
+    public void Die()
+    {
+        Spaceship ship = FindFirstObjectByType<Spaceship>();
+        if (ship != null)
+        {
+
+            ship.Score += score;
+            Destroy(gameObject);
+        }
+
+    }
+
+
+    void Start()
+    {
+        rightPoint.y = Random.Range(5, -3);
         StartCoroutine(LerpFunction(rightPoint, 3));
         StartCoroutine(Shooting());
+        
+    }
 
+    // Update is called once per frame
+    void Update()
+    {
+ 
+        
+        gameObject.transform.rotation = Quaternion.Euler(0, 0, (Rotator.z += Time.deltaTime * rotationSpeed));
     }
 
     IEnumerator LerpFunction(Vector2 _endPoint, float _duration)
@@ -49,7 +78,7 @@ public class RedMonster : MonoBehaviour
 
             Vector2 newPos = Vector2.Lerp(startValue, _endPoint, t);
 
-            transform.position = new Vector3(newPos.x, newPos.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x, newPos.y, transform.position.z);
 
             time += Time.deltaTime;
 
@@ -57,67 +86,21 @@ public class RedMonster : MonoBehaviour
 
         }
 
-        if (inverted)
-
-        {
-
-            inverted = false;
-
-            StartCoroutine(LerpFunction(rightPoint, 3));
-
-        }
-
-        else
-
-        {
-
-            inverted = true;
-
-            StartCoroutine(LerpFunction(leftPoint, 3));
-
-        }
-        
-
     }
-
-    public void TakeDamage(int damage) 
-    {
-        Health -= (damage);
-        if(Health <= 0)
-        {
-            Die();
-
-        }
-    }
-
-    public void Die() 
-    {
-        Spaceship ship = FindFirstObjectByType<Spaceship>();
-        if(ship != null)
-        {
-
-            ship.Score += score;
-            Destroy(gameObject);
-        }
-
-    }
-
     public void Shoot()
     {
         GameObject EnemyBullet = Instantiate(BulletPrefab, transform.position, transform.rotation);
         Rigidbody2D rb = EnemyBullet.GetComponent<Rigidbody2D>();
         Vector2 force = transform.up * BulletSpeed;
         rb.AddForce(force);
-    }
 
+    }
     IEnumerator Shooting()
     {
         Shoot();
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.3f);
         StartCoroutine(Shooting());
 
-    }
+    } 
 
 }
-
-

@@ -1,16 +1,20 @@
 using JetBrains.Annotations;
 using System.Collections;
-
+using System.Diagnostics;
 using UnityEngine;
 
-public class RedMonster : MonoBehaviour
+public class MedusaHead : MonoBehaviour
 
 {
+    public int CollisionDamage;
+
     public int Health;
 
     public Vector2 leftPoint;
 
     public Vector2 rightPoint;
+
+    private Vector2 Middlepoint;
 
     public float duration;
 
@@ -24,14 +28,33 @@ public class RedMonster : MonoBehaviour
 
     public float BulletSpeed = 300;
 
+    public float Speed;
+
+    public GameObject Explosion;
+
+
+  
+
     private void Start()
 
     {
+        leftPoint.y = gameObject.transform.position.y;
+        rightPoint.y = gameObject.transform.position.y;
+        Middlepoint.x = gameObject.transform.position.x;
+        leftPoint.x = Middlepoint.x + -8;
+        rightPoint.x = Middlepoint.x + 8;
+
         gameObject.transform.rotation = Quaternion.Euler(0, 0, 180);
         StartCoroutine(LerpFunction(rightPoint, 3));
-        StartCoroutine(Shooting());
 
     }
+    private void Update()
+    {
+        leftPoint.y += Time.deltaTime * Speed;
+        rightPoint.y += Time.deltaTime * Speed;
+    }
+
+
 
     IEnumerator LerpFunction(Vector2 _endPoint, float _duration)
 
@@ -49,7 +72,7 @@ public class RedMonster : MonoBehaviour
 
             Vector2 newPos = Vector2.Lerp(startValue, _endPoint, t);
 
-            transform.position = new Vector3(newPos.x, newPos.y, transform.position.z);
+            transform.position = new Vector3(newPos.x, leftPoint.y, transform.position.z);
 
             time += Time.deltaTime;
 
@@ -76,24 +99,24 @@ public class RedMonster : MonoBehaviour
             StartCoroutine(LerpFunction(leftPoint, 3));
 
         }
-        
+
 
     }
 
-    public void TakeDamage(int damage) 
+    public void TakeDamage(int damage)
     {
         Health -= (damage);
-        if(Health <= 0)
+        if (Health <= 0)
         {
             Die();
 
         }
     }
 
-    public void Die() 
+    public void Die()
     {
         Spaceship ship = FindFirstObjectByType<Spaceship>();
-        if(ship != null)
+        if (ship != null)
         {
 
             ship.Score += score;
@@ -102,22 +125,17 @@ public class RedMonster : MonoBehaviour
 
     }
 
-    public void Shoot()
+    public void OnTriggerEnter2D(Collider2D collision)
     {
-        GameObject EnemyBullet = Instantiate(BulletPrefab, transform.position, transform.rotation);
-        Rigidbody2D rb = EnemyBullet.GetComponent<Rigidbody2D>();
-        Vector2 force = transform.up * BulletSpeed;
-        rb.AddForce(force);
-    }
+        Spaceship ship = collision.gameObject.GetComponent<Spaceship>();
+        if (ship != null)
+        {
+            Instantiate(Explosion, transform.position, Quaternion.identity);
+            TakeDamage(1);
+            ship.TakeDamage(CollisionDamage);
 
-    IEnumerator Shooting()
-    {
-        Shoot();
-        yield return new WaitForSeconds(1);
-        StartCoroutine(Shooting());
+        }
 
     }
 
 }
-
-

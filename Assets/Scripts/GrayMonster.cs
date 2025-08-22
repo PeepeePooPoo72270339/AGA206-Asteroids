@@ -59,7 +59,7 @@ public class GrayMonster : MonoBehaviour
     IEnumerator Shooting()
     {
         Shoot();
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.2f);
         StartCoroutine(Shooting());
 
     }

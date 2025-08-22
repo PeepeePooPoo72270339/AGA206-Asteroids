@@ -39,6 +39,22 @@ public class Bullet : MonoBehaviour
             Blowup();
 
         }
+
+        GreenMonsterScript greenMonster = collision.gameObject.GetComponent<GreenMonsterScript>();
+        if (greenMonster)
+        {
+            greenMonster.TakeDamage(Damage);
+            Blowup();
+
+        }
+
+        MedusaHead medusaHead = collision.gameObject.GetComponent<MedusaHead>();
+        if (medusaHead)
+        {
+            medusaHead.TakeDamage(Damage);
+            Blowup();
+
+        }
    }
 
 }
