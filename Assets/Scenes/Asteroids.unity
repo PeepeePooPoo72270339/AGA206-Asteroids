@@ -1128,7 +1128,7 @@ MonoBehaviour:
   CurrentHp: 0
   BulletPrefab: {fileID: 6036470394332747684, guid: ea4c2d87d17079e438f88cba27422ee9, type: 3}
   BulletSpeed: 400
-  FiringRate: 0.33
+  FiringRate: 0.5
   Hitsounds: {fileID: 695416947}
   Flash: {fileID: 1207304656}
   Score: 0
@@ -1496,6 +1496,8 @@ MonoBehaviour:
   - {fileID: 6964001095121275964, guid: b3191bfb189a24c4cbc6ff1cc457ca52, type: 3}
   - {fileID: 2644763213176576873, guid: e685b10256dcaf04a9248aa58b8a1243, type: 3}
   - {fileID: 2644763213176576873, guid: e685b10256dcaf04a9248aa58b8a1243, type: 3}
+  - {fileID: 2644763213176576873, guid: 438a9f73111bf1f4e80a0b055ea017a6, type: 3}
+  - {fileID: 2644763213176576873, guid: 438a9f73111bf1f4e80a0b055ea017a6, type: 3}
   CheckInterval: 3
   PushForce: 100
   SpawnThreshold: 300

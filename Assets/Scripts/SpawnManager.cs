@@ -31,6 +31,7 @@ public class SpawnManager : Singleton<SpawnManager>
 
     private void Update()
     {
+        CheckInterval = CheckInterval - Time.deltaTime / 30;
         checkTimer += Time.deltaTime;
         if(checkTimer > CheckInterval)
         {
@@ -41,6 +42,9 @@ public class SpawnManager : Singleton<SpawnManager>
                 SpawnAsteroid();
             }
         }
+
+
+
     }
     private void SpawnAsteroid()
     {
@@ -62,6 +66,14 @@ public class SpawnManager : Singleton<SpawnManager>
             Vector2 force = PushDirection(spawnpoint) * PushForce;
             Rigidbody2D rb = asteroid.GetComponent<Rigidbody2D>();
             rb.AddForce(force);
+        }
+
+        if (randomindex > 12 )
+        {
+            Vector2 force = PushDirection(spawnpoint) * PushForce;
+            Rigidbody2D rb = asteroid.GetComponent<Rigidbody2D>();
+            rb.AddForce(force);
+
         }
         
     }
