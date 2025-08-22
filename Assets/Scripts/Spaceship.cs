@@ -54,12 +54,6 @@ public class Spaceship : MonoBehaviour
         //ApplyTorque(horizontal);
         Updatefiring();
         
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            TakeDamage(1);
-        }
-
-
 
 
 
