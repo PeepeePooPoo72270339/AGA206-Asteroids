@@ -31,7 +31,11 @@ public class SpawnManager : Singleton<SpawnManager>
 
     private void Update()
     {
-        CheckInterval = CheckInterval - Time.deltaTime / 30;
+        if (CheckInterval > 1.5f)
+        {
+            CheckInterval = CheckInterval - Time.deltaTime / 30;
+        }
+       
         checkTimer += Time.deltaTime;
         if(checkTimer > CheckInterval)
         {
@@ -42,6 +46,8 @@ public class SpawnManager : Singleton<SpawnManager>
                 SpawnAsteroid();
             }
         }
+
+        Mathf.Clamp(CheckInterval, 1, 20 );
 
 
 
